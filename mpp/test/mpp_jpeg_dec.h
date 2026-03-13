@@ -7,7 +7,7 @@
 extern "C" {
 #endif
 
-int mpp_decode_jpeg_stream(char *jpeg_data, size_t jpeg_size, size_t jpeg_width, size_t jpeg_height, char *yuv_data, size_t yuv_size, size_t *yuv_width, size_t *yuv_height);
+int mpp_decode_jpeg_stream(char *jpeg_data, size_t jpeg_size, char *yuv_data, size_t yuv_size);
 
 #ifdef __cplusplus
 }

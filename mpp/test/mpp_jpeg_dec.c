@@ -10,16 +10,11 @@
 #include "mpp_frame.h"
 #include "mpp_packet.h"
 
-int mpp_decode_jpeg_stream(char *jpeg_data, size_t jpeg_size, size_t jpeg_width, size_t jpeg_height, char *yuv_data, size_t yuv_size, size_t *yuv_width, size_t *yuv_height)
+int mpp_decode_jpeg_stream(char *jpeg_data, size_t jpeg_size, char *yuv_data, size_t yuv_size)
 {
     if (!jpeg_data || jpeg_size == 0 || !yuv_data || yuv_size == 0) {
         return -1;
     }
-
-    // Suppress unused parameter warnings for jpeg dimensions
-    // MPP auto-detects jpeg dimensions from the stream headers
-    (void)jpeg_width;
-    (void)jpeg_height;
 
     MppCtx ctx = NULL;
     MppApi *mpi = NULL;
@@ -106,13 +101,6 @@ int mpp_decode_jpeg_stream(char *jpeg_data, size_t jpeg_size, size_t jpeg_width,
                     RK_U32 frame_height = mpp_frame_get_height(frame);
                     RK_U32 hor_stride = mpp_frame_get_hor_stride(frame);
                     RK_U32 ver_stride = mpp_frame_get_ver_stride(frame);
-
-                    if (yuv_width) {
-                        *yuv_width = frame_width;
-                    }
-                    if (yuv_height) {
-                        *yuv_height = frame_height;
-                    }
 
                     // Actual width/height to copy
                     size_t w = frame_width;
