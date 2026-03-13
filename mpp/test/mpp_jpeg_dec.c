@@ -51,14 +51,14 @@ int mpp_decode_jpeg_stream(char *jpeg_data, size_t jpeg_size, char *yuv_data, si
     }
 
     int get_frame = 0;
-    int try_times = 50;
+    int try_times = 200; // Increased to 200
 
     while (try_times > 0 && !get_frame) {
         MppFrame frame = NULL;
         ret = mpi->decode_get_frame(ctx, &frame);
 
         if (MPP_ERR_TIMEOUT == ret) {
-            usleep(2000);
+            usleep(5000); // Increased to 5ms
             try_times--;
             continue;
         }
@@ -135,6 +135,8 @@ int mpp_decode_jpeg_stream(char *jpeg_data, size_t jpeg_size, char *yuv_data, si
                     if (!failed) {
                         get_frame = 1;
                     }
+                } else {
+                    printf("frame decode returned valid frame but buffer is NULL\n");
                 }
             }
 
@@ -144,9 +146,15 @@ int mpp_decode_jpeg_stream(char *jpeg_data, size_t jpeg_size, char *yuv_data, si
                 break;
             }
         } else {
-            usleep(2000);
+            // log the occurrence of ret == 0 but frame == NULL
+            // printf("decode_get_frame returned MPP_OK but frame is NULL. Waiting... (%d attempts left)\n", try_times);
+            usleep(5000); // 5ms
             try_times--;
         }
+    }
+
+    if (!get_frame) {
+        printf("failed to get decoded frame, try_times exhausted\n");
     }
 
     /* clean up */
