@@ -1,0 +1,2 @@
+/usr/bin/ar qc libcodec_avs2d.a CMakeFiles/codec_avs2d.dir/avs2d_api.c.o CMakeFiles/codec_avs2d.dir/avs2d_parse.c.o CMakeFiles/codec_avs2d.dir/avs2d_ps.c.o CMakeFiles/codec_avs2d.dir/avs2d_dpb.c.o
+/usr/bin/ranlib libcodec_avs2d.a

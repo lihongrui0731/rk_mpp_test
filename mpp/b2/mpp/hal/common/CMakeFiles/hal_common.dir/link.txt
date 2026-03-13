@@ -1,0 +1,2 @@
+/usr/bin/ar qc libhal_common.a CMakeFiles/hal_common.dir/hal_info.c.o CMakeFiles/hal_common.dir/hal_bufs.c.o
+/usr/bin/ranlib libhal_common.a

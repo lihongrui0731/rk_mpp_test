@@ -1,0 +1,2 @@
+/usr/bin/ar qc libhal_h265d.a CMakeFiles/hal_h265d.dir/hal_h265d_api.c.o CMakeFiles/hal_h265d.dir/hal_h265d_com.c.o CMakeFiles/hal_h265d.dir/hal_h265d_rkv.c.o CMakeFiles/hal_h265d.dir/hal_h265d_vdpu34x.c.o
+/usr/bin/ranlib libhal_h265d.a

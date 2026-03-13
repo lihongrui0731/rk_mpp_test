@@ -1,0 +1,2 @@
+/usr/bin/ar qc libhal_vepu541_common.a CMakeFiles/hal_vepu541_common.dir/vepu541_common.c.o
+/usr/bin/ranlib libhal_vepu541_common.a

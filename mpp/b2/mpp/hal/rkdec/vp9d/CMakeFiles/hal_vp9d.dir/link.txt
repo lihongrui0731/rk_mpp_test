@@ -1,0 +1,2 @@
+/usr/bin/ar qc libhal_vp9d.a CMakeFiles/hal_vp9d.dir/hal_vp9d_api.c.o CMakeFiles/hal_vp9d.dir/hal_vp9d_com.c.o CMakeFiles/hal_vp9d.dir/hal_vp9d_rkv.c.o CMakeFiles/hal_vp9d.dir/hal_vp9d_vdpu34x.c.o
+/usr/bin/ranlib libhal_vp9d.a

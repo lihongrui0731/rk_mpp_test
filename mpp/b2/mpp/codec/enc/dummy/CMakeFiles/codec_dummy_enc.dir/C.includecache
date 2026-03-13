@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../mpp/codec/inc/dummy_enc_api.h
+
+/userdata/jpegTest/RK_MPP/mpp/mpp/codec/enc/dummy/dummy_enc_api.c
+dummy_enc_api.h
+/userdata/jpegTest/RK_MPP/mpp/mpp/codec/enc/dummy/dummy_enc_api.h
+

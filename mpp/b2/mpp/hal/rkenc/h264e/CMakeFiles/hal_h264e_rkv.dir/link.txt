@@ -1,0 +1,2 @@
+/usr/bin/ar qc libhal_h264e_rkv.a CMakeFiles/hal_h264e_rkv.dir/hal_h264e_vepu541.c.o CMakeFiles/hal_h264e_rkv.dir/hal_h264e_vepu580.c.o
+/usr/bin/ranlib libhal_h264e_rkv.a

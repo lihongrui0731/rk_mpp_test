@@ -1,0 +1,2 @@
+/usr/bin/ar qc libhal_h265e_vepu541.a CMakeFiles/hal_h265e_vepu541.dir/hal_h265e_vepu541.c.o CMakeFiles/hal_h265e_vepu541.dir/hal_h265e_vepu580.c.o
+/usr/bin/ranlib libhal_h265e_vepu541.a

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libhal_av1d.a CMakeFiles/hal_av1d.dir/hal_av1d_api.c.o CMakeFiles/hal_av1d.dir/hal_av1d_vdpu.c.o CMakeFiles/hal_av1d.dir/film_grain_noise_table.c.o
+/usr/bin/ranlib libhal_av1d.a

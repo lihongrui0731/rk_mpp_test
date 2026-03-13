@@ -1,0 +1,2 @@
+/usr/bin/ar qc libcodec_av1d.a CMakeFiles/codec_av1d.dir/av1d_api.c.o CMakeFiles/codec_av1d.dir/av1d_parser.c.o CMakeFiles/codec_av1d.dir/av1d_parser2_syntax.c.o CMakeFiles/codec_av1d.dir/av1d_cbs.c.o CMakeFiles/codec_av1d.dir/av1d_probs.c.o CMakeFiles/codec_av1d.dir/av1_entropymode.c.o
+/usr/bin/ranlib libcodec_av1d.a

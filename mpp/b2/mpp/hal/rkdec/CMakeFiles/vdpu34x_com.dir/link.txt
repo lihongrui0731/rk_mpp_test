@@ -1,0 +1,2 @@
+/usr/bin/ar qc libvdpu34x_com.a CMakeFiles/vdpu34x_com.dir/vdpu34x_com.c.o
+/usr/bin/ranlib libvdpu34x_com.a

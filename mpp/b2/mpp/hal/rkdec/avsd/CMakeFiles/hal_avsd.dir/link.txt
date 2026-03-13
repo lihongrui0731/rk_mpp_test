@@ -1,0 +1,2 @@
+/usr/bin/ar qc libhal_avsd.a CMakeFiles/hal_avsd.dir/hal_avsd_api.c.o CMakeFiles/hal_avsd.dir/hal_avsd_base.c.o CMakeFiles/hal_avsd.dir/hal_avsd_vdpu1.c.o CMakeFiles/hal_avsd.dir/hal_avsd_vdpu2.c.o CMakeFiles/hal_avsd.dir/hal_avsd_plus.c.o
+/usr/bin/ranlib libhal_avsd.a

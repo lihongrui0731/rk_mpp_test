@@ -1,0 +1,2 @@
+/usr/bin/ar qc libhal_avs2d.a CMakeFiles/hal_avs2d.dir/hal_avs2d_rkv.c.o CMakeFiles/hal_avs2d.dir/hal_avs2d_api.c.o
+/usr/bin/ranlib libhal_avs2d.a

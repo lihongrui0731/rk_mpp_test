@@ -1,0 +1,2 @@
+/usr/bin/ar qc libcodec_h265e.a CMakeFiles/codec_h265e.dir/h265e_api.c.o CMakeFiles/codec_h265e.dir/h265e_dpb.c.o CMakeFiles/codec_h265e.dir/h265e_ps.c.o CMakeFiles/codec_h265e.dir/h265e_slice.c.o CMakeFiles/codec_h265e.dir/h265e_header_gen.c.o CMakeFiles/codec_h265e.dir/h265e_stream.c.o CMakeFiles/codec_h265e.dir/h265e_syntax.c.o CMakeFiles/codec_h265e.dir/h265e_enctropy.c.o
+/usr/bin/ranlib libcodec_h265e.a

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libcodec_h264e.a CMakeFiles/codec_h264e.dir/h264e_api_v2.c.o CMakeFiles/codec_h264e.dir/h264e_sps.c.o CMakeFiles/codec_h264e.dir/h264e_pps.c.o CMakeFiles/codec_h264e.dir/h264e_sei.c.o CMakeFiles/codec_h264e.dir/h264e_dpb.c.o CMakeFiles/codec_h264e.dir/h264e_slice.c.o
+/usr/bin/ranlib libcodec_h264e.a
