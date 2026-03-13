@@ -10,11 +10,16 @@
 #include "mpp_frame.h"
 #include "mpp_packet.h"
 
-int mpp_decode_jpeg_stream(char *jpeg_data, size_t jpeg_size, char *yuv_data, size_t yuv_size, size_t yuv_width, size_t yuv_height)
+int mpp_decode_jpeg_stream(char *jpeg_data, size_t jpeg_size, size_t jpeg_width, size_t jpeg_height, char *yuv_data, size_t yuv_size, size_t *yuv_width, size_t *yuv_height)
 {
     if (!jpeg_data || jpeg_size == 0 || !yuv_data || yuv_size == 0) {
         return -1;
     }
+
+    // Suppress unused parameter warnings for jpeg dimensions
+    // MPP auto-detects jpeg dimensions from the stream headers
+    (void)jpeg_width;
+    (void)jpeg_height;
 
     MppCtx ctx = NULL;
     MppApi *mpi = NULL;
@@ -102,9 +107,16 @@ int mpp_decode_jpeg_stream(char *jpeg_data, size_t jpeg_size, char *yuv_data, si
                     RK_U32 hor_stride = mpp_frame_get_hor_stride(frame);
                     RK_U32 ver_stride = mpp_frame_get_ver_stride(frame);
 
-                    // Actual width/height to copy (use provided or frame's if not provided)
-                    size_t w = (yuv_width > 0 && yuv_width <= frame_width) ? yuv_width : frame_width;
-                    size_t h = (yuv_height > 0 && yuv_height <= frame_height) ? yuv_height : frame_height;
+                    if (yuv_width) {
+                        *yuv_width = frame_width;
+                    }
+                    if (yuv_height) {
+                        *yuv_height = frame_height;
+                    }
+
+                    // Actual width/height to copy
+                    size_t w = frame_width;
+                    size_t h = frame_height;
 
                     // Usually NV12 or YUV420SP. Copy Y plane
                     char *dst = yuv_data;
