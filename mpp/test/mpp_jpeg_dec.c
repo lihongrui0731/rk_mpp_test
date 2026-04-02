@@ -10,7 +10,7 @@
 #include "mpp_frame.h"
 #include "mpp_packet.h"
 
-int mpp_decode_jpeg_stream(char *jpeg_data, size_t jpeg_size, char *yuv_data, size_t yuv_size, size_t yuv_width, size_t yuv_height)
+int mpp_decode_jpeg_stream(char *jpeg_data, size_t jpeg_size, char *yuv_data, size_t yuv_size)
 {
     if (!jpeg_data || jpeg_size == 0 || !yuv_data || yuv_size == 0) {
         return -1;
@@ -51,14 +51,14 @@ int mpp_decode_jpeg_stream(char *jpeg_data, size_t jpeg_size, char *yuv_data, si
     }
 
     int get_frame = 0;
-    int try_times = 50;
+    int try_times = 200; // Increased to 200
 
     while (try_times > 0 && !get_frame) {
         MppFrame frame = NULL;
         ret = mpi->decode_get_frame(ctx, &frame);
 
         if (MPP_ERR_TIMEOUT == ret) {
-            usleep(2000);
+            usleep(5000); // Increased to 5ms
             try_times--;
             continue;
         }
@@ -102,9 +102,9 @@ int mpp_decode_jpeg_stream(char *jpeg_data, size_t jpeg_size, char *yuv_data, si
                     RK_U32 hor_stride = mpp_frame_get_hor_stride(frame);
                     RK_U32 ver_stride = mpp_frame_get_ver_stride(frame);
 
-                    // Actual width/height to copy (use provided or frame's if not provided)
-                    size_t w = (yuv_width > 0 && yuv_width <= frame_width) ? yuv_width : frame_width;
-                    size_t h = (yuv_height > 0 && yuv_height <= frame_height) ? yuv_height : frame_height;
+                    // Actual width/height to copy
+                    size_t w = frame_width;
+                    size_t h = frame_height;
 
                     // Usually NV12 or YUV420SP. Copy Y plane
                     char *dst = yuv_data;
@@ -135,6 +135,8 @@ int mpp_decode_jpeg_stream(char *jpeg_data, size_t jpeg_size, char *yuv_data, si
                     if (!failed) {
                         get_frame = 1;
                     }
+                } else {
+                    printf("frame decode returned valid frame but buffer is NULL\n");
                 }
             }
 
@@ -144,9 +146,15 @@ int mpp_decode_jpeg_stream(char *jpeg_data, size_t jpeg_size, char *yuv_data, si
                 break;
             }
         } else {
-            usleep(2000);
+            // log the occurrence of ret == 0 but frame == NULL
+            // printf("decode_get_frame returned MPP_OK but frame is NULL. Waiting... (%d attempts left)\n", try_times);
+            usleep(5000); // 5ms
             try_times--;
         }
+    }
+
+    if (!get_frame) {
+        printf("failed to get decoded frame, try_times exhausted\n");
     }
 
     /* clean up */
